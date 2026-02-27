@@ -1,0 +1,52 @@
+﻿Obstacles:
+Recursive is not necessarily lots of coding but I found it very tricky to work since it was hard to see exactly what went wrong. I struggled with vocabularyHelper conceptually at first. I just couldn’t find a way to get an index. I then had the idea to add the index as a parameter in the helper function and call that instead each time. For potential sequences, I used more helper functions. I started by trying to write the code with loops to better grasp what I was doing. Then, I used the same idea of creating a helper function with an added index parameter called findAnagrams. This also had to ensure that there weren’t issues with the stack by making sure MAXRESULTS stopped the recursion. I also compared the strings one by one in potential sequences which may not be the most optimized way but it is reliable and ensures a uniqueness. 
+
+
+Test cases: 
+    //this tests potential seqeuence and if it returns the correct size and adds the results correctly
+    string exampleDict[] = {"kool", "moe", "dee"};
+    int numResults = potentialSequences("kloo", exampleDict,
+    3, results);
+    assert(numResults == 1 && results[0] == "kool");
+    //this tests that the elements in result are properly outputted by outcome disclosure
+    outcomeDisclosure(results, numResults);
+    
+    //this also tests potential seqeuence and if it returns the correct size and adds the results correctly
+    string results2[7];
+    string exampleDict2[] = {"kool", "moe", "dee", "look", "okol", "eom", "ede"};
+    int numMatches = potentialSequences("eed", exampleDict2,
+    7, results2);
+    assert(numMatches == 2);
+    assert(results2[0]=="dee");
+    //this tests that the elements in result are properly outputted by outcome disclosure
+    outcomeDisclosure(results2, numMatches);
+    
+    //this also tests potential seqeuence and if it returns the correct size and adds the results correctly
+    string Dict2[] = {"enlist", "google", "inlets", "banana", "listen", "silent"};
+    int numMatches2 = potentialSequences("listen", Dict2, 6, results);
+    //this tests that the elements in result are properly outputted by outcome disclosure
+    outcomeDisclosure(results, numMatches2);
+
+
+I used the provided main function to test many possible anagrams and also random letters:
+dictfile.open("words.txt");
+if (!dictfile) {
+    cout << "File not found!" << endl;
+    return (1);
+}
+    
+    
+//normal input thing
+nwords = vocabularyCreator(dictfile, dict);
+cout << "Please enter a string for an anagram: ";
+cin >> word;
+int numMatches = potentialSequences(word, dict, nwords, results);
+if (!numMatches) {
+    cout << "No matches found" << endl;
+}
+else {
+    outcomeDisclosure(results, numMatches);
+}
+
+
+Inputs: wiuefiwf, art, dylan, listen, silent, accompaniment, ipaccmnentoam, Worthington, rnogtonWhti
